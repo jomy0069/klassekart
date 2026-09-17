@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title> klassekart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input placeholder="skriv inn navn" id="navn">
+    <button onclick="navn()">skriv</button>
+    <input placeholder="skriv inn hvor mange bord i bredden" id="bredde" style="width: 250px;">
+    <input placeholder="skriv inn hvor mange bord som skal stå sammen" id="bordBredde" style="width: 300px;">
+    <button onclick="BordBredde()">lag klassekart</button>
+    <button style="margin-left: 100px;" onclick="mixElever()">mix elever</button>
+    <button onclick="spelventKlasserom()">bytt dør og vindu</button>
+    <button onclick="jubellyd()">jubellyd</button>
+    <input placeholder="hvor eleven ikke for lov til å sitte" id="ikke">
+    
+  
+  <div id="vindu">v i n d u</div>
+  <div id="tavle"> tavle</div>
+  <div id="dør">d ø r</div>
+  <div id="klasseRom">
+<div id="alleBord">
+  
+
+    <div onclick="byttElev()" class="bord" id="bord0"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord1"></div> 
+    <div onclick="byttElev()" class="bord" id="bord2"></div>
+    <div onclick="byttElev()" class="bord" id="bord3"></div>
+    <div onclick="byttElev()" class="bord" id="bord4"></div>
+    <div onclick="byttElev()" class="bord" id="bord5"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord6"></div>
+    <div onclick="byttElev()" class="bord" id="bord7"></div>
+    <div onclick="byttElev()" class="bord" id="bord8"></div>
+    <div onclick="byttElev()" class="bord" id="bord9"></div>
+    <div onclick="byttElev()" class="bord" id="bord10"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord11"></div>
+    <div onclick="byttElev()" class="bord" id="bord12"></div>
+    <div onclick="byttElev()" class="bord" id="bord13"></div>
+    <div onclick="byttElev()" class="bord" id="bord14"></div>
+    <div onclick="byttElev()" class="bord" id="bord15"></div>
+    
+
+
+    <div onclick="byttElev()" class="bord" id="bord16"></div>
+    <div onclick="byttElev()" class="bord" id="bord17"></div>
+    <div onclick="byttElev()" class="bord" id="bord18"></div>
+    <div onclick="byttElev()" class="bord" id="bord19"></div>
+    <div onclick="byttElev()" class="bord" id="bord20"></div>
+    
+
+    <div onclick="byttElev()" class="bord" id="bord21"></div>
+    <div onclick="byttElev()" class="bord" id="bord22"></div>
+    <div onclick="byttElev()" class="bord" id="bord23"></div>
+    <div onclick="byttElev()" class="bord" id="bord24"></div>
+    <div onclick="byttElev()" class="bord" id="bord25"></div>
+    
+
+    <div onclick="byttElev()" class="bord" id="bord26"></div>
+    <div onclick="byttElev()" class="bord" id="bord27"></div>
+
+
+  
+    <div onclick="byttElev()" class="bord" id="bord28"></div>
+    <div onclick="byttElev()" class="bord" id="bord29"></div>
+    <div onclick="byttElev()" class="bord" id="bord30"></div>
+    
+    <div onclick="byttElev()" class="bord" id="bord31"></div>
+    <div onclick="byttElev()" class="bord" id="bord32"></div>
+    <div onclick="byttElev()" class="bord" id="bord33"></div>
+    <div onclick="byttElev()" class="bord" id="bord34"></div>
+    <div onclick="byttElev()" class="bord" id="bord35"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord36"></div>
+    <div onclick="byttElev()" class="bord" id="bord37"></div>
+    <div onclick="byttElev()" class="bord" id="bord38"></div>
+    <div onclick="byttElev()" class="bord" id="bord39"></div>
+    <div onclick="byttElev()" class="bord" id="bord40"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord41"></div>
+    <div onclick="byttElev()" class="bord" id="bord42"></div>
+    <div onclick="byttElev()" class="bord" id="bord43"></div>
+    <div onclick="byttElev()" class="bord" id="bord44"></div>
+    <div onclick="byttElev()" class="bord" id="bord45"></div>
+
+    <div onclick="byttElev()" class="bord" id="bord46"></div>
+    <div onclick="byttElev()" class="bord" id="bord47"></div>
+    
+</div>
+</div>
+
+</body>
+<script>
+let hvorMangeSitterSammen=0
+/////////////////////////////////////////////////////////////////////// lager en liste med navn 
+let elever= []
+let ikkeelver=[]
+let ikke=document.getElementById('ikke').value
+    function navn(){
+        let elev=document.getElementById("navn").value
+        if(elever.length>30){
+            alert("du kan ikke skrive inn flere navn")
+            
+        }
+        if(ikke>-1){
+          ikkeelver.push(elev)
+        console.log(elever)
+        let boks = document.getElementsByClassName('bord')
+        boks[ikkeelver.length-1].innerHTML=elev
+        boks[ikkeelver.length-1].style.visibility='visible'
+        console.log(ikkeelver,)
+
+
+        }
+        else {
+            elever.push(elev)
+        console.log(elever)
+        let boks = document.getElementsByClassName('bord')
+        boks[elever.length-1].innerHTML=elev
+        boks[elever.length-1].style.visibility='visible'
+
+       
+        }     
+    }
+/////////////////////////////////////////////////////////////////////// legger til navn ved å trykke "enter" isteden for å trykke på knappen
+    document.addEventListener('keydown', function(event) {
+  
+  if (event.keyCode === 13) { 
+    navn();
+  }
+})
+/////////////////////////////////////////////////////////////////////// function som mixer elevene
+    function mixElever(){
+        for(let i=0;i<elever.length; i++){
+            tall=Math.floor(Math.random()*elever.length)
+            temp= elever[tall]
+            elever[tall]=elever[i]
+            elever[i]=temp
+
+            
+        }
+        plaserElever()
+        console.log(elever)
+
+    }
+/////////////////////////////////////////////////////////////////////// function som gir elvene plass
+    function plaserElever(){
+        
+        for(let i=0; i<elever.length; i++){
+        let bordet=document.getElementById("bord"+i)
+        
+        bordet.style.visibility="visible"
+        bordet.innerHTML=elever[i]
+    }
+
+    }
+
+/////////////////////////////////////////////////////////////////////// function som bytter dør og vindu
+let speilvent= true
+function spelventKlasserom(){
+ 
+  if (speilvent==true){
+  document.getElementById('dør').style.marginLeft = '1.2%'
+  document.getElementById('vindu').style.marginLeft = '93%'
+  speilvent=false
+
+  }
+  else{
+  document.getElementById('dør').style.marginLeft = '93%'
+  document.getElementById('vindu').style.marginLeft = '1.2%'
+  speilvent=true
+}
+  
+
+console.log('speilvent=',speilvent)
+}
+/////////////////////////////////////////////////////////////////////// function som bytter valgt elev med random elev
+function byttElev() {
+  var valgtBord = event.target;
+  var valgtNavn = valgtBord.innerText;
+
+  var alleBord = document.getElementsByClassName("bord");
+  var tilfeldigIndex = Math.floor(Math.random() * elever.length);
+  var tilfeldigBord = alleBord[tilfeldigIndex];
+  var tilfeldigNavn = tilfeldigBord.innerText;
+
+  valgtBord.innerText = tilfeldigNavn;
+  tilfeldigBord.innerText = valgtNavn;
+}
+/////////////////////////////////////////////////////////////////////// function som lager jubellyd og visser to og to
+  function jubellyd(){
+   
+  mixElever()
+  tall=0
+  let k = elever.length
+  while(k>tall){
+  document.getElementById('bord'+tall).style.visibility='hidden';
+  document.getElementById('bord'+tall).innerHTML.visibility='hidden';
+  tall=tall+1
+
+
+  
+  
+  let a=0
+  let jubel=new Audio('klapping.mp3')
+
+  function miniWhile(){
+  if(k>a && hvorMangeSitterSammen==2){
+    let bord1 = document.getElementById('bord' + a);
+    let bord2 = document.getElementById('bord' + (a+1));
+    bord1.style.visibility = 'visible';
+    bord1.innerHTML.visibility = 'visible';
+    bord2.style.visibility = 'visible';
+    bord2.innerHTML.visibility = 'visible';
+  
+    
+
+    jubel.play()
+    
+    a=a+2
+    console.log(a)
+    setTimeout(miniWhile,5000);
+  }
+  if(k>a && hvorMangeSitterSammen==3){
+    
+    let bord1 = document.getElementById('bord' + a);
+    let bord2 = document.getElementById('bord' + (a+1));
+    let bord3 = document.getElementById('bord' + (a+2));
+    bord1.style.visibility = 'visible';
+    bord1.innerHTML.visibility = 'visible';
+    bord2.style.visibility = 'visible';
+    bord2.innerHTML.visibility = 'visible';
+    bord3.style.visibility = 'visible';
+    bord3.innerHTML.visibility = 'visible';
+  
+    
+
+    jubel.play()
+    
+    a=a+3
+    
+    setTimeout(miniWhile,5000);
+
+  }
+  if(k>a && hvorMangeSitterSammen==4){
+    
+    let bord1 = document.getElementById('bord' + a);
+    let bord2 = document.getElementById('bord' + (a+1));
+    let bord3 = document.getElementById('bord' + (a+2));
+    let bord4 = document.getElementById('bord' + (a+3));
+    bord1.style.visibility = 'visible';
+    bord1.innerHTML.visibility = 'visible';
+    bord2.style.visibility = 'visible';
+    bord2.innerHTML.visibility = 'visible';
+    bord3.style.visibility = 'visible';
+    bord3.innerHTML.visibility = 'visible';
+    bord4.style.visibility = 'visible';
+    bord4.innerHTML.visibility = 'visible';
+  
+    
+
+    jubel.play()
+    
+    a=a+4
+    setTimeout(miniWhile,5000);
+
+  }
+  
+}
+ miniWhile()
+}
+  }
+/////////////////////////////////////////////////////////////////////// hvor mange bord det skal være i bredden
+function bredde(){
+  let bredde=document.getElementById("bredde").value
+  let bord=document.getElementsByClassName('bord')
+  let breddeVerdi=parseFloat(bredde)
+  let hvorMangeSitterSammenVerdi=parseFloat(hvorMangeSitterSammen)
+  let tottalBredde=breddeVerdi*hvorMangeSitterSammenVerdi
+  let nyBredde=(70)/tottalBredde
+  let u=0
+ 
+  
+  
+   for(let i=0; i<bord.length;i+=tottalBredde){
+    for(let l=0;l<tottalBredde;l++){
+      let mTop=150*i/tottalBredde
+      bord[l+i].style.position='absolute'
+      bord[l+i].style.marginTop=mTop+'px'
+      bord[l+i].style.marginLeft=mTop+'px'
+      bord[l+i].style.width= nyBredde+'%'
+      bord[l+i].style.marginLeft=l*nyBredde+'%'
+      bord[l+i].style.backgroundColor='red'
+      for(let k=0;k<bord.length;k+=4){
+       if((hvorMangeSitterSammenVerdi==2||hvorMangeSitterSammenVerdi==1)&&(i==tottalBredde*k||i==tottalBredde*(k+1))&&(l==2||l==3||l==6||l==7||l==10||l==11||l==14||l==15||l==18||l==19)){
+        bord[l+i].style.backgroundColor='blue' 
+        
+       }
+      
+       if((hvorMangeSitterSammenVerdi==2||hvorMangeSitterSammenVerdi==1)&&(i==tottalBredde*(k+3)||i==tottalBredde*(k+2))&&(l==0||l==1||l==4||l==5||l==8||l==9||l==12||l==13)){
+        bord[l+i].style.backgroundColor='yellow'
+       
+        }  
+
+
+        if(hvorMangeSitterSammenVerdi==3&&(i==tottalBredde*k||i==tottalBredde*(k+1))&&(l==3||l==4||l==5||l==9||l==10||l==11||l==15||l==16||l==17||l==21||l==22||l==23)){
+        bord[l+i].style.backgroundColor='blue' 
+       
+       }
+      
+       if(hvorMangeSitterSammenVerdi==3&&(i==tottalBredde*(k+3)||i==tottalBredde*(k+2))&&(l==0||l==1||l==2||l==6||l==7||l==8||l==12||l==13||l==14)){
+        bord[l+i].style.backgroundColor='yellow'
+       
+        }  
+    }
+     
+      for(let e=hvorMangeSitterSammenVerdi-1;e<l;e+=hvorMangeSitterSammenVerdi){
+      if (l>=hvorMangeSitterSammenVerdi){
+        bord[(l+i)].style.marginLeft = ((l)*nyBredde+e+1)+"%";
+      }
+    
+     
+    
+     }
+    } }
+    
+   
+ 
+   
+
+}
+/////////////////////////////////////////////////////////////////////// ||l+i%breddeVerdi==hvorMangeSitterSammenVerdi-2
+function BordBredde(){
+  let BordBredde=document.getElementById('bordBredde').value
+  hvorMangeSitterSammen=BordBredde
+  console.log(hvorMangeSitterSammen)
+  bredde()
+ 
+}
+
+</script>
+</html>
